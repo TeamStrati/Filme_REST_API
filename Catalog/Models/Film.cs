@@ -22,11 +22,11 @@ namespace Catalog.Models
         [Required]
         public string Director { get; set; }
 
-        // [Required]
-        //public string Studio { get; set; }
+         [Required]
+        public int Studio { get; set; }
 
-        // [Required]
-        // public string Categorie { get; set; }
+         [Required]
+         public int Categorie { get; set; }
 
         [Required]
         public string Writers { get; set; }

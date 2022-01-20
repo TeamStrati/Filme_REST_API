@@ -46,7 +46,7 @@ namespace Catalog.Controllers
     {
             var film = _FilmRepo.GetFilm(id);
 
-            if (film == null) return NotFound();
+            //if (film == null) return NotFound();
             var filmDTO = new FilmDTO
             {
                 Id = film.Id,
@@ -63,8 +63,11 @@ namespace Catalog.Controllers
                 RuntimeInMinutes = film.RuntimeInMinutes,
                 BudgetInUSDollar = film.BudgetInUSDollar,
                 Rating = film.Rating,
+
+                
             };
             return filmDTO;
+
     }
 
         [HttpPost]
@@ -95,12 +98,12 @@ namespace Catalog.Controllers
         public ActionResult UpdateFilm(Guid id,CreateOrUpdateFilmDTO film)
         {
 
-            
+
 
             var film2 = _FilmRepo.GetFilm(id);
 
             if (film2 == null) return NotFound();
-
+            
             film2.Title = film.Title;
             film2.Description = film.Description;
             film2.PriceInCent = film.PriceInCent;
@@ -113,17 +116,17 @@ namespace Catalog.Controllers
             film2.RuntimeInMinutes = film.RuntimeInMinutes;
             film2.BudgetInUSDollar = film.BudgetInUSDollar;
             film2.Rating = film.Rating;
-
+            
             _FilmRepo.UpdateFilm(id, film2);
 
-            return Ok();
+            return Ok(); 
         }
 
         [HttpDelete("{id}")]
         public ActionResult DeleteFilm(Guid id)
         {
-            var film = _FilmRepo.GetFilm(id);
-            if (film == null) return NotFound();
+            //var film = _FilmRepo.GetFilm(id);
+            //if (film == null) return NotFound();
 
             _FilmRepo.DeleteFilm(id);
             return Ok();
